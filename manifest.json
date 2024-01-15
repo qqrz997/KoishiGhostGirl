@@ -1,0 +1,9 @@
+{
+    "name": "KoishiGhost",
+    "version_number": "1.0.0",
+    "website_url": "https://github.com/qqrz997/LethalCompany_KoishiGhost",
+    "description": "Lethal Company mod to replace Ghost Girl enemy with Koishi Komeiji from Touhou Chireiden ~ Subterranean Animism",
+    "dependencies": [
+        "BepInEx-BepInExPack-5.4.2100"
+    ]
+}
