@@ -37,8 +37,19 @@ namespace KoishiGhost.Patches
                 Transform bodyTransform = koishiObject.transform.Find("Body");
                 SkinnedMeshRenderer bodyMesh = bodyTransform.GetComponent<SkinnedMeshRenderer>();
                 bodyMesh.rootBone = rigTransform;
-                bodyMesh.gameObject.layer = LayerMask.NameToLayer("EnemiesNotRedered");
                 bodyMesh.gameObject.tag = "DoNotSet";
+
+                if (!KoishiConfig.useOriginalSound.Value)
+                {
+                    __instance.heartbeatMusic.clip = Plugin.koishHeartbeatAudio;
+                    __instance.heartbeatMusic.pitch = 1f;
+                    __instance.heartbeatMusic.Play();
+                }
+
+                if (KoishiConfig.useOriginalShader.Value)
+                {
+                    bodyMesh.material = Plugin.originalGirlMaterial;
+                }
 
                 List<SkinnedMeshRenderer> list = new List<SkinnedMeshRenderer>();
                 foreach (SkinnedMeshRenderer item in __instance.skinnedMeshRenderers)
@@ -48,10 +59,6 @@ namespace KoishiGhost.Patches
                 list.Add(bodyMesh);
                 __instance.skinnedMeshRenderers = list.ToArray();
 
-                __instance.heartbeatMusic.clip = Plugin.koishHeartbeatAudio;
-                __instance.heartbeatMusic.pitch = 1f;
-                __instance.heartbeatMusic.Play();
-               
 
                 animationTransform.name = "old_metarig";
             }

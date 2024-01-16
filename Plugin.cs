@@ -4,6 +4,7 @@ using BepInEx;
 using BepInEx.Logging;
 using KoishiGhost.Patches;
 
+
 namespace KoishiGhost
 {
     [BepInPlugin(modGUID, modName, modVersion)]
@@ -11,23 +12,26 @@ namespace KoishiGhost
     {
         private const string modGUID = "qqrz.KoishiGhost";
         private const string modName = "Koishi Komeiji Ghost Girl";
-        private const string modVersion = "1.0.0";
+        private const string modVersion = "1.1.0";
 
         private readonly Harmony harmony = new Harmony(modGUID);
 
-        private static Plugin Instance;
+        public static Plugin Instance;
 
         internal static AssetBundle koishBundle;
         public static GameObject koishMesh;
         public static AudioClip koishHeartbeatAudio;
+        public static Material originalGirlMaterial;
 
         public static ManualLogSource log;
-
+        
         void Awake()
         {
             if (Instance != null && Instance != this)
             { Destroy(this); }
             else { Instance = this; }
+
+            KoishiConfig.ConfigSettings();
 
             log = BepInEx.Logging.Logger.CreateLogSource(modGUID);
             log.LogInfo("Koishi Ghost loaded");
@@ -39,6 +43,7 @@ namespace KoishiGhost
             {
                 koishMesh = koishBundle.LoadAsset<GameObject>("Assets/Bundles/Koishi2/koishi.prefab");
                 koishHeartbeatAudio = koishBundle.LoadAsset<AudioClip>("Assets/Bundles/Koishi2/heartbeatMusic.wav");
+                originalGirlMaterial = koishBundle.LoadAsset<Material>("Assets/Bundles/Koishi2/Materials/koishiUnlit.mat");
                 log.LogInfo("Asset bundle loaded");
             }
             else { log.LogError("Asset bundle not loaded"); }
