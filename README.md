@@ -2,7 +2,7 @@
 
 Lethal Company mod to replace Ghost Girl enemy with Koishi Komeiji from Touhou Chireiden ~ Subterranean Animism.
 
-- Replaces model with a custom model
+- Replaces model with a custom model. Model created and rigged by [KivalEvan](https://github.com/KivalEvan)
 - Adds custom audio
 
 ## Config
