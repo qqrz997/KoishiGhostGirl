@@ -12,7 +12,7 @@ namespace KoishiGhost
     {
         private const string modGUID = "qqrz.KoishiGhost";
         private const string modName = "Koishi Komeiji Ghost Girl";
-        private const string modVersion = "1.1.0";
+        private const string modVersion = "1.1.2";
 
         private readonly Harmony harmony = new Harmony(modGUID);
 
